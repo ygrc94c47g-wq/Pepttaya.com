@@ -79,6 +79,19 @@
     <span>Accept the terms to continue</span>
     <button type="button" class="btn btn-gold btn-sm" id="gate-reopen">Accept terms</button>
   </div>
+  <!-- Music player (play/stop only, no autoplay) — see music.js -->
+  <div class="music-player" id="music-player" role="region" aria-label="Background music">
+    <img src="assets/logo.png" alt="" class="music-logo" width="44" height="46" aria-hidden="true">
+    <button type="button" class="music-btn" id="music-btn" aria-pressed="false" aria-label="Play music">
+      <span class="music-icon" aria-hidden="true">
+        <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
+        <svg class="icon-stop" viewBox="0 0 24 24" width="22" height="22"><rect x="6" y="6" width="12" height="12" rx="2.2" fill="currentColor"/></svg>
+      </span>
+      <span class="music-label">Play music</span>
+    </button>
+    <audio id="music-audio" src="assets/music.mp3" preload="none" loop></audio>
+  </div>
   <script src="gate.js"></script>
+  <script src="music.js"></script>
 </body>
 </html>

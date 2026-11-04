@@ -352,3 +352,57 @@ html.gate-reading .gate-readbar {
   .gate-card { padding: 30px 20px 22px; }
   .gate-logo { width: 100px; }
 }
+
+/* ==========================================================
+   Music player (logo + play/stop button) — see music.js
+   ========================================================== */
+.music-player {
+  position: fixed; left: 20px; bottom: 20px; z-index: 70;
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px 8px 8px 10px; border-radius: 999px;
+  background: rgba(0, 15, 42, .82);
+  border: 1px solid rgba(249, 179, 29, .35);
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, .75), 0 0 0 1px rgba(4, 112, 205, .18) inset;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+html.gate-open .music-player, html.gate-reading .music-player { display: none; }
+.music-logo { width: 44px; height: auto; flex: 0 0 auto; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5)); }
+.music-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 12px;
+  min-height: 60px; padding: 0 26px 0 12px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--gold); color: var(--navy);
+  font-family: var(--font-sans); font-size: 1.08rem; font-weight: 700; letter-spacing: .01em;
+  box-shadow: 0 10px 26px -8px rgba(249, 179, 29, .65);
+  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+}
+.music-btn:hover { background: var(--gold-soft); transform: translateY(-1px); box-shadow: 0 14px 30px -8px rgba(249, 179, 29, .8); }
+.music-btn:active { transform: translateY(1px); }
+.music-btn:focus-visible { outline: 3px solid var(--ocean-light); outline-offset: 4px; }
+.music-icon {
+  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--navy); color: var(--gold);
+}
+.music-icon .icon-stop { display: none; }
+.music-player.is-playing .icon-play { display: none; }
+.music-player.is-playing .icon-stop { display: block; }
+.music-player.is-playing .music-btn::before,
+.music-player.is-playing .music-btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  border: 2px solid var(--gold); animation: musicPulse 2s ease-out infinite;
+}
+.music-player.is-playing .music-btn::after { border-color: var(--sunset); animation-delay: 1s; }
+.music-player.is-playing .music-btn { box-shadow: 0 0 0 4px rgba(246, 112, 12, .25), 0 0 28px 4px rgba(249, 179, 29, .55); }
+@keyframes musicPulse {
+  0%   { transform: scale(1); opacity: .85; }
+  100% { transform: scale(1.18, 1.45); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .music-player.is-playing .music-btn::before, .music-player.is-playing .music-btn::after { animation: none; opacity: 0; }
+}
+.site-footer { padding-bottom: 104px; }
+@media (max-width: 480px) {
+  .music-player { left: 12px; bottom: 12px; gap: 10px; padding: 6px 6px 6px 8px; }
+  .music-logo { width: 40px; }
+  .music-btn { min-height: 56px; font-size: 1rem; padding: 0 22px 0 10px; }
+  .music-icon { width: 36px; height: 36px; }
+}
