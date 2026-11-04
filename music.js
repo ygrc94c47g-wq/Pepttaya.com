@@ -1,8 +1,9 @@
 // Pepttaya: background music player
 // - small logo + big play/stop button + volume slider
 // - fades in from silence; remembers volume and a user "Stop"
-// - starts when the visitor clicks Enter on the 21+ gate (a user gesture)
-// - returning visitors: tries to start on load, else on the first tap/click/key
+// - starts on the 21+ gate itself: tries autoplay on load, else on the first
+//   tap/click/key anywhere (e.g. ticking a gate checkbox); Enter keeps it going
+// - returning visitors: same (autoplay on load, else first tap/click/key)
 // - keeps playing across pages: internal links (index <-> terms) swap the page
 //   content in place so the <audio> element never stops; full page loads resume
 //   from the saved position via sessionStorage
@@ -113,7 +114,8 @@
     if (btn.contains(e.target)) { disarmGesture(); return; }
     if (slider && slider.contains(e.target)) return;
     if (userStopped() || wantPlaying) { disarmGesture(); return; }
-    if (root.classList.contains('gate-open') || root.classList.contains('gate-reading')) return;
+    // A touch pointerdown is not a user activation yet; wait for touchend/click
+    if (e.type === 'pointerdown' && e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
     disarmGesture();
     start(armedFade).catch(function () {});
   }
@@ -152,7 +154,7 @@
 
   audio.addEventListener('playing', function () { if (wantPlaying) setUI(true); });
 
-  // Gate "Enter" click -> start with fade-in (inside the user gesture)
+  // Gate "Enter" click -> start only if not already playing (never restarts)
   document.addEventListener('pepttaya:entered', function () {
     if (!userStopped() && !wantPlaying) start(3000).catch(function () {});
   });
@@ -225,11 +227,22 @@
     swapTo(location.href, false).catch(function () { location.reload(); });
   });
 
+  // ---------- Keep clear of the terms reading bar ----------
+  function placePlayer() {
+    var bar = document.getElementById('gate-readbar');
+    var off = 0;
+    if (root.classList.contains('gate-reading') && bar && !bar.hidden) off = bar.getBoundingClientRect().height;
+    player.style.bottom = off ? 'calc(' + Math.ceil(off) + 'px + 10px)' : '';
+  }
+  if (window.MutationObserver) new MutationObserver(placePlayer).observe(root, { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('resize', placePlayer);
+  placePlayer();
+
   // ---------- Initial state on a full page load ----------
   setUI(false);
   var saved = null;
   try { saved = JSON.parse(ss(STATE_KEY) || 'null'); } catch (e) {}
-  if (gateAccepted() && !userStopped()) {
+  if (!userStopped()) {
     if (saved && saved.playing && typeof saved.t === 'number') {
       // Resume from the same point (plus the moment spent loading)
       var t = saved.t + Math.min(3, Math.max(0, (Date.now() - (saved.ts || Date.now())) / 1000));

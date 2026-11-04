@@ -258,7 +258,7 @@ p { margin: 0 0 1em; }
    ========================================================== */
 .age-gate { display: none; }
 html.gate-open, html.gate-open body { overflow: hidden; }
-html.gate-open body > *:not(.age-gate):not(.gate-readbar):not(script) {
+html.gate-open body > *:not(.age-gate):not(.gate-readbar):not(.music-player):not(script) {
   filter: blur(14px); pointer-events: none; user-select: none;
 }
 html.gate-open .age-gate {
@@ -396,7 +396,9 @@ html.gate-reading .gate-readbar {
   .music-eq i:nth-child(3) { height: 70%; } .music-eq i:nth-child(4) { height: 40%; }
   .music-now { transition: none; }
 }
-html.gate-open .music-player, html.gate-reading .music-player { display: none; }
+/* Player stays usable on the 21+ gate: above the overlay, gate content kept clear of it */
+html.gate-open .music-player { z-index: 1010; }
+html.gate-open .age-gate { padding-bottom: 140px; }
 .music-logo { width: 44px; height: auto; flex: 0 0 auto; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5)); }
 .music-btn {
   position: relative; display: inline-flex; align-items: center; gap: 12px;
