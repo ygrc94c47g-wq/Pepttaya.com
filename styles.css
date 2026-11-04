@@ -507,3 +507,18 @@ html.gate-open .age-gate { padding-bottom: 140px; }
   .avail-body .btn { white-space: normal; text-align: center; justify-content: center; }
   .avail-soon .avail-body { min-height: 200px; }
 }
+
+/* ==========================================================
+   Delivery gallery: smaller thumbnails (scoped to #delivery)
+   ========================================================== */
+#delivery .gallery { max-width: 760px; margin-inline: auto; gap: 16px; grid-template-columns: repeat(4, 1fr); }
+#delivery .gallery figure { border-radius: 14px; }
+#delivery .gallery img { display: block; }
+#delivery .gallery img[src$="delivery-4.jpg"] { object-position: 50% 15%; }
+@media (max-width: 960px) {
+  #delivery .gallery { grid-template-columns: repeat(4, 1fr); max-width: 640px; gap: 14px; }
+}
+@media (max-width: 760px) {
+  #delivery .gallery { grid-template-columns: repeat(2, 1fr); max-width: 360px; gap: 12px; }
+  #delivery .gallery figure { border-radius: 12px; }
+}
