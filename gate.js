@@ -69,6 +69,8 @@
     if (!(age.checked && tos.checked)) return;
     save();
     close();
+    // Let the music player start inside this click (counts as a user gesture)
+    try { document.dispatchEvent(new CustomEvent('pepttaya:entered')); } catch (e) {}
     root.classList.remove('gate-reading');
     if (readbar) readbar.setAttribute('hidden', '');
   });

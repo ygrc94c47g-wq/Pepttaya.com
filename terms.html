@@ -89,6 +89,9 @@
       </span>
       <span class="music-label">Play music</span>
     </button>
+    <label class="music-vol" for="music-volume">
+      <input type="range" id="music-volume" class="music-range" min="0" max="1" step="0.01" value="0.25" aria-label="Music volume">
+    </label>
     <audio id="music-audio" src="assets/music.mp3" preload="none" loop></audio>
   </div>
   <script src="gate.js"></script>
