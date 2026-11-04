@@ -38,8 +38,14 @@
   function gateAccepted() { return !!ls(GATE_KEY); }
   function userStopped() { return ls(STOP_KEY) === '1'; }
 
+  var nowText = document.getElementById('music-now-text');
+  var trackName = [audio.getAttribute('data-title'), audio.getAttribute('data-artist')].filter(Boolean).join(' \u2014 ');
   function setUI(playing) {
     player.classList.toggle('is-playing', playing);
+    if (nowText) {
+      var txt = playing ? (trackName ? 'Now playing \u00b7 ' + trackName : 'Now playing') : '';
+      if (nowText.textContent !== txt) nowText.textContent = txt;
+    }
     btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
     btn.setAttribute('aria-label', playing ? 'Stop music' : 'Play music');
     if (label) label.textContent = playing ? 'Stop music' : 'Play music';

@@ -227,18 +227,24 @@
   </footer>
   <!-- Music player (play/stop only, no autoplay) — see music.js -->
   <div class="music-player" id="music-player" role="region" aria-label="Background music">
-    <img src="assets/logo.png" alt="" class="music-logo" width="44" height="46" aria-hidden="true">
-    <button type="button" class="music-btn" id="music-btn" aria-pressed="false" aria-label="Play music">
+    <div class="music-pill">
+      <img src="assets/logo.png" alt="" class="music-logo" width="44" height="46" aria-hidden="true">
+      <button type="button" class="music-btn" id="music-btn" aria-pressed="false" aria-label="Play music">
       <span class="music-icon" aria-hidden="true">
         <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>
         <svg class="icon-stop" viewBox="0 0 24 24" width="22" height="22"><rect x="6" y="6" width="12" height="12" rx="2.2" fill="currentColor"/></svg>
       </span>
       <span class="music-label">Play music</span>
-    </button>
-    <label class="music-vol" for="music-volume">
+      </button>
+      <label class="music-vol" for="music-volume">
       <input type="range" id="music-volume" class="music-range" min="0" max="1" step="0.01" value="0.25" aria-label="Music volume">
-    </label>
-    <audio id="music-audio" src="assets/music.mp3" preload="none" loop></audio>
+      </label>
+    </div>
+    <div class="music-now" id="music-now" aria-live="polite">
+      <span class="music-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="music-now-text" id="music-now-text"></span>
+    </div>
+    <audio id="music-audio" src="assets/music.mp3" preload="none" loop data-title="BALANÇÔ" data-artist="NELLIN"></audio>
   </div>
   <script src="script.js"></script>
   <script src="gate.js"></script>
