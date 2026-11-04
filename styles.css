@@ -515,6 +515,9 @@ html.gate-open .age-gate { padding-bottom: 140px; }
 #delivery .gallery figure { border-radius: 14px; }
 #delivery .gallery img { display: block; }
 #delivery .gallery img[src$="delivery-4.jpg"] { object-position: 50% 15%; }
+#delivery .gallery img[src$="delivery-5.jpg"] { object-position: 57% 55%; }
+#delivery .gallery img[src$="delivery-6.jpg"] { object-position: 50% 52%; }
+#delivery .gallery img[src$="delivery-7.jpg"] { object-position: 33% 50%; }
 @media (max-width: 960px) {
   #delivery .gallery { grid-template-columns: repeat(4, 1fr); max-width: 640px; gap: 14px; }
 }
