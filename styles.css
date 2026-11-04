@@ -129,7 +129,7 @@ p { margin: 0 0 1em; }
   background: linear-gradient(135deg, var(--ocean), var(--sunset)); color: #fff; font-weight: 700; margin-bottom: 18px;
 }
 
-.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .gallery figure { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); aspect-ratio: 3 / 4; }
 .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .gallery figure:hover img { transform: scale(1.04); }
@@ -210,6 +210,7 @@ p { margin: 0 0 1em; }
 
 /* Responsive */
 @media (max-width: 960px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
   .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
   .hero-logo { max-width: 340px; }
   .lede { margin-inline: auto; }
