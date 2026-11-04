@@ -374,7 +374,7 @@ html.gate-reading .gate-readbar {
   display: flex; align-items: center; gap: 8px; max-width: 100%;
   margin: 0 0 0 14px; padding: 0 14px; max-height: 0; overflow: hidden; opacity: 0;
   border-radius: 0 0 14px 14px;
-  background: rgba(0, 15, 42, .9); border: 1px solid transparent; border-top: 0;
+  background: #000f2a; border: 1px solid transparent; border-top: 0;
   color: var(--text); font-family: var(--font-sans); font-size: .8rem; font-weight: 600; letter-spacing: .02em;
   transition: max-height .3s ease, opacity .3s ease, padding .3s ease;
 }
