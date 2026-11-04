@@ -470,3 +470,40 @@ html.gate-open .age-gate { padding-bottom: 140px; }
   .music-vol { padding: 0 8px 0 0; }
   .music-range { width: 84px; }
 }
+
+/* ==========================================================
+   What's available (Thailand + UK)
+   ========================================================== */
+.avail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; align-items: stretch; }
+.avail-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: linear-gradient(180deg, var(--navy-3), var(--navy-2));
+  border: 1px solid var(--line); border-radius: var(--radius);
+}
+.avail-media { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border-bottom: 1px solid var(--line); }
+.avail-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+.avail-card:hover .avail-media img { transform: scale(1.03); }
+.avail-body { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 28px; flex: 1; }
+.avail-body p { color: var(--muted); margin: 0; font-size: .98rem; }
+.avail-body .btn { margin-top: 6px; }
+.avail-title {
+  display: inline-flex; align-items: center; gap: 12px; margin: 0;
+  border-top: 3px solid var(--gold); padding-top: 16px; font-size: 1.6rem;
+}
+.flag { display: inline-block; flex: 0 0 auto; border-radius: 3px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .25); }
+.avail-soon { justify-content: center; border-style: dashed; border-color: rgba(249, 179, 29, .35); background: linear-gradient(180deg, rgba(13, 39, 82, .55), rgba(7, 28, 63, .55)); }
+.avail-soon .avail-body { justify-content: center; align-items: center; text-align: center; min-height: 260px; }
+.avail-badge {
+  display: inline-block; padding: 6px 14px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--sunset), var(--gold)); color: var(--navy);
+  font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+.avail-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; width: 100%; }
+.avail-items:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .avail-media img { transition: none; } .avail-card:hover .avail-media img { transform: none; } }
+@media (max-width: 760px) {
+  .avail-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+  .avail-body { padding: 22px; }
+  .avail-body .btn { white-space: normal; text-align: center; justify-content: center; }
+  .avail-soon .avail-body { min-height: 200px; }
+}
