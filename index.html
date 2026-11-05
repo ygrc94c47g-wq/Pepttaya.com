@@ -1,518 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pepttaya Labs</title>
-  <meta name="description" content="Pepttaya Labs supplies research chemicals and peptides for laboratory research use only. Shipping worldwide, with stock in Thailand and the UK. Order simply and securely by WhatsApp.">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <meta name="theme-color" content="#000f2a">
-  <link rel="canonical" href="https://pepttaya.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pepttaya.com/">
-  <meta property="og:title" content="Pepttaya Labs">
-  <meta property="og:description" content="Pepttaya Labs supplies research chemicals and peptides for laboratory research use only. Shipping worldwide, with stock in Thailand and the UK. Order simply and securely by WhatsApp.">
-  <meta property="og:image" content="https://pepttaya.com/assets/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pepttaya Labs</title>
+    <meta name="description" content="Pepttaya Labs supplies research chemicals and peptides for laboratory research use only. Shipping worldwide, with stock in Thailand and the UK. Order simply and securely by WhatsApp.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#000f2a">
+    <link rel="canonical" href="https://pepttaya.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pepttaya.com/">
+    <meta property="og:title" content="Pepttaya Labs">
+    <meta property="og:description" content="Pepttaya Labs supplies research chemicals and peptides for laboratory research use only. Shipping worldwide, with stock in Thailand and the UK. Order simply and securely by WhatsApp.">
+    <meta property="og:image" content="https://pepttaya.com/assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
-  <!-- Product gallery: three images per row on all devices -->
-  <style>
-    #available .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-
-    #available .product-grid img {
-      display: block;
-      width: 100%;
-      max-width: none;
-      height: auto;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 8px;
-      min-width: 0;
-      margin: 0;
-    }
-
-    #available .avail-card {
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    @media (max-width: 600px) {
+    <!-- Product gallery: three images per row on all devices -->
+    <style>
       #available .product-grid {
+        display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 4px;
-        padding: 6px;
+        gap: 6px;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
       }
-    }
-  </style>
 
-  <script>
-    (function() {
-      var d = document.documentElement;
-      try {
-        if (!localStorage.getItem('pepttaya_gate_v1')) {
+      #available .product-grid img {
+        display: block;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 8px;
+        min-width: 0;
+        margin: 0;
+      }
+
+      #available .avail-card {
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      @media (max-width: 600px) {
+        #available .product-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 4px;
+          padding: 6px;
+        }
+      }
+    </style>
+
+    <script>
+      (function() {
+        var d = document.documentElement;
+        try {
+          if (!localStorage.getItem('pepttaya_gate_v1')) {
+            d.classList.add('gate-open');
+          }
+        } catch(e) {
           d.classList.add('gate-open');
         }
-      } catch(e) {
-        d.classList.add('gate-open');
-      }
-    })();
-  </script>
-</head>
+      })();
+    </script>
+  </head>
 
-<body>
-  <!-- Entry gate -->
-  <div class="age-gate" id="age-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc" tabindex="-1">
-    <div class="gate-glow" aria-hidden="true"></div>
-    <div class="gate-card">
-      <img src="assets/logo.png" alt="Pepttaya logo" class="gate-logo" width="140" height="147">
-      <h2 class="gate-title" id="gate-title">Before you enter</h2>
-      <p class="gate-desc" id="gate-desc">You must be 21 years of age or older to enter this site. Please confirm below and accept our Terms of Service to continue.</p>
+  <body>
+    <!-- Entry gate -->
+    <div class="age-gate" id="age-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc" tabindex="-1">
+      <div class="gate-glow" aria-hidden="true"></div>
+      <div class="gate-card">
+        <img src="assets/logo.png" alt="Pepttaya logo" class="gate-logo" width="140" height="147">
+        <h2 class="gate-title" id="gate-title">Before you enter</h2>
+        <p class="gate-desc" id="gate-desc">You must be 21 years of age or older to enter this site. Please confirm below and accept our Terms of Service to continue.</p>
 
-      <label class="gate-check" for="gate-age">
-        <input type="checkbox" id="gate-age">
-        <span class="gate-box" aria-hidden="true"></span>
-        <span class="gate-label">I confirm I am 21 years of age or older</span>
-      </label>
+        <label class="gate-check" for="gate-age">
+          <input type="checkbox" id="gate-age">
+          <span class="gate-box" aria-hidden="true"></span>
+          <span class="gate-label">I confirm I am 21 years of age or older</span>
+        </label>
 
-      <label class="gate-check" for="gate-tos">
-        <input type="checkbox" id="gate-tos">
-        <span class="gate-box" aria-hidden="true"></span>
-        <span class="gate-label">I have read and accept the <a href="terms.html" id="gate-tos-link">Terms of Service</a></span>
-      </label>
+        <label class="gate-check" for="gate-tos">
+          <input type="checkbox" id="gate-tos">
+          <span class="gate-box" aria-hidden="true"></span>
+          <span class="gate-label">I have read and accept the <a href="terms.html" id="gate-tos-link">Terms of Service</a></span>
+        </label>
 
-      <button type="button" class="btn btn-gold gate-enter" id="gate-enter" disabled aria-disabled="true">Enter</button>
-      <a href="https://www.google.com" class="gate-leave">Leave</a>
+        <button type="button" class="btn btn-gold gate-enter" id="gate-enter" disabled aria-disabled="true">Enter</button>
+        <a href="https://www.google.com" class="gate-leave">Leave</a>
+      </div>
     </div>
-  </div>
 
-  <div class="notice-bar">For laboratory research use only. Not for human or veterinary use.</div>
+    <div class="notice-bar">For laboratory research use only. Not for human or veterinary use.</div>
 
-  <header class="site-header" id="top">
-    <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="Pepttaya home">
-        <img src="assets/logo.png" alt="Pepttaya logo" class="brand-logo" width="51" height="53">
-        <span class="brand-name">Pepttaya</span>
-      </a>
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="brand" aria-label="Pepttaya home">
+          <img src="assets/logo.png" alt="Pepttaya logo" class="brand-logo" width="51" height="53">
+          <span class="brand-name">Pepttaya</span>
+        </a>
 
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span><span></span>
-      </button>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+          <span></span><span></span><span></span>
+        </button>
 
-      <nav class="site-nav" id="site-nav">
-        <a href="#available">Available</a>
-        <a href="#why">Why us</a>
-        <a href="#testing">Lab testing</a>
-        <a href="#order">How to order</a>
-        <a href="#delivery">Delivery</a>
-        <a href="#payments">Payments</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://wa.me/447365234742" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-logo-wrap reveal">
-          <img src="assets/logo.png" alt="Pepttaya Labs logo" class="hero-logo" width="800" height="840">
-        </div>
-
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Pepttaya Labs</p>
-          <h1>Research compounds,<br><span class="grad">handled with care.</span></h1>
-          <p class="lede">Reliable supply of research chemicals and peptides for laboratory research. No accounts or checkout forms: just message us on WhatsApp to order.</p>
-          <div class="hero-actions">
-            <a href="https://wa.me/447365234742" class="btn btn-gold" target="_blank" rel="noopener">Message us on WhatsApp</a>
-            <a href="#about" class="btn btn-ghost">Learn more</a>
-          </div>
-          <p class="hero-note">Research use only. Not for human consumption.</p>
-        </div>
+        <nav class="site-nav" id="site-nav">
+          <a href="#available">Available</a>
+          <a href="#why">Why us</a>
+          <a href="#testing">Lab testing</a>
+          <a href="#order">How to order</a>
+          <a href="#delivery">Delivery</a>
+          <a href="#payments">Payments</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://wa.me/447365234742" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <section class="badge-strip" aria-label="Why researchers choose Pepttaya">
-      <ul class="container badges">
-        <li class="badge reveal">
-          <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3L14 9V3"/>
-            <path d="M7.5 15h9"/>
-          </svg>
-          <span>Third-party lab tested</span>
-        </li>
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-logo-wrap reveal">
+            <img src="assets/logo.png" alt="Pepttaya Labs logo" class="hero-logo" width="800" height="840">
+          </div>
 
-        <li class="badge reveal">
-          <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
-            <path d="M14 3v5h5"/>
-            <path d="m9 14 2 2 4-4"/>
-          </svg>
-          <span>Certificates of Analysis available</span>
-        </li>
-
-        <li class="badge reveal">
-          <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 7h11v9H3z"/>
-            <path d="M14 10h4l3 3v3h-7"/>
-            <circle cx="7" cy="18" r="1.8"/>
-            <circle cx="17" cy="18" r="1.8"/>
-          </svg>
-          <span>Shipped worldwide</span>
-        </li>
-
-        <li class="badge reveal">
-          <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/>
-            <path d="M9 12h6"/>
-          </svg>
-          <span>Research use only</span>
-        </li>
-
-        <li class="badge reveal">
-          <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.1-4.6A9 9 0 1 1 21 12z"/>
-          </svg>
-          <span>Order on WhatsApp</span>
-        </li>
-      </ul>
-    </section>
-
-    <!-- UPDATED THREE-COLUMN PRODUCT GALLERY -->
-    <section class="section" id="available">
-      <div class="container">
-        <p class="eyebrow reveal">Availability</p>
-        <h2 class="reveal">What's available</h2>
-
-        <div class="avail-grid">
-          <article class="avail-card reveal" aria-labelledby="avail-ww">
-
-            <div class="product-grid">
-              <img src="assets/IMG_0441.webp" alt="Pepttaya research product 1" loading="lazy" width="200" height="200">
-              <img src="assets/IMG_0442.webp" alt="Pepttaya research product 2" loading="lazy" width="200" height="200">
-              <img src="assets/IMG_0443.webp" alt="Pepttaya research product 3" loading="lazy" width="200" height="200">
-              <img src="assets/IMG_0444.webp" alt="Pepttaya research product 4" loading="lazy" width="200" height="200">
-              <img src="assets/IMG_0445.webp" alt="Pepttaya research product 5" loading="lazy" width="200" height="200">
-              <img src="assets/IMG_0446.webp" alt="Pepttaya research product 6" loading="lazy" width="200" height="200">
-              <img src="assets/14B9EA66-07DA-4FB8-993D-F23362A1F835.png" alt="Pepttaya research product 7" loading="lazy" width="200" height="200">
-<img src="assets/2A14D94C-EC98-486C-B86D-A28AD0EE1291.png" alt="Pepttaya research product 8" loading="lazy" width="200" height="200">
-<img src="assets/35D5076B-DD14-4331-9F53-D2716AD83E2E.png" alt="Pepttaya research product 9" loading="lazy" width="200" height="200">
-<img src="assets/6C724E05-FB58-468E-8025-3A5C28615793.png" alt="Pepttaya research product 10" loading="lazy" width="200" height="200">
-<img src="assets/77E257E2-4EC5-4010-9964-FF1D7C0F216B.png" alt="Pepttaya research product 11" loading="lazy" width="200" height="200">
-<img src="assets/960145F3-D8AA-4EE8-959B-934DC04C1A9B.png" alt="Pepttaya research product 12" loading="lazy" width="200" height="200">
-<img src="assets/AC4EBC6C-AFC5-4BD6-BA43-000FA8D4F913.png" alt="Pepttaya research product 13" loading="lazy" width="200" height="200">
-<img src="assets/D0581366-7C10-4123-9954-E90D1FE41E49.png" alt="Pepttaya research product 14" loading="lazy" width="200" height="200">
-<img src="assets/EC42C355-6A32-4BAA-AED0-032D3E89AD1B.png" alt="Pepttaya research product 15" loading="lazy" width="200" height="200">
-<img src="assets/5C50A1DD-C599-45D7-9EA1-C51216468EC1.png" alt="Pepttaya research product 16" loading="lazy" width="200" height="200">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Pepttaya Labs</p>
+            <h1>Research compounds,<br><span class="grad">handled with care.</span></h1>
+            <p class="lede">Reliable supply of research chemicals and peptides for laboratory research. No accounts or checkout forms: just message us on WhatsApp to order.</p>
+            <div class="hero-actions">
+              <a href="https://wa.me/447365234742" class="btn btn-gold" target="_blank" rel="noopener">Message us on WhatsApp</a>
+              <a href="#about" class="btn btn-ghost">Learn more</a>
             </div>
-
-            <div class="avail-body">
-              <h3 class="avail-title" id="avail-ww">
-                Available worldwide
-                <svg class="flag" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="#f9b31d" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
-              </h3>
-              <p>We ship worldwide, with stock held in Thailand and the UK for collection or quick local post. Message us on WhatsApp for the current list.</p>
-              <a href="https://wa.me/447365234742?text=Hi%20Pepttaya%2C%20can%20I%20see%20the%20current%20list%3F" class="btn btn-gold" target="_blank" rel="noopener">Get the current list on WhatsApp</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="about">
-      <div class="container narrow">
-        <p class="eyebrow reveal">About</p>
-        <h2 class="reveal">About Pepttaya</h2>
-        <p class="reveal">Pepttaya Labs supplies research chemicals and peptides to researchers who value a straightforward, dependable service. We keep ordering simple, communication clear and every parcel carefully packed, so you can focus on your work.</p>
-
-        <div class="cards">
-          <div class="card reveal">
-            <h3>Quality focus</h3>
-            <p>We take care over what we stock and how it is stored and handled, from our shelf to your door.</p>
-          </div>
-          <div class="card reveal">
-            <h3>Discreet, secure packaging</h3>
-            <p>Orders are sealed and packed securely in plain outer packaging to keep them protected and private in transit.</p>
-          </div>
-          <div class="card reveal">
-            <h3>Fast WhatsApp support</h3>
-            <p>Questions, quotes and order updates all happen in one chat, with quick, friendly replies from a real person.</p>
+            <p class="hero-note">Research use only. Not for human consumption.</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="why">
-      <div class="container">
-        <p class="eyebrow reveal">Why Pepttaya</p>
-        <h2 class="reveal">Why researchers choose us</h2>
-        <p class="section-sub reveal">A simple service built on a few things we can stand behind.</p>
+      <section class="badge-strip" aria-label="Why researchers choose Pepttaya">
+        <ul class="container badges">
+          <li class="badge reveal">
+            <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3L14 9V3"/>
+              <path d="M7.5 15h9"/>
+            </svg>
+            <span>Third-party lab tested</span>
+          </li>
 
-        <div class="why-grid">
-          <article class="why-card reveal">
-            <span class="why-num">01</span>
-            <h3>Third-party tested</h3>
-            <p>Our products are tested by an independent third-party laboratory, not just checked in-house.</p>
-          </article>
-          <article class="why-card reveal">
-            <span class="why-num">02</span>
-            <h3>CoAs on request</h3>
-            <p>Certificates of Analysis are available to share. Ask on WhatsApp and we'll send them over.</p>
-          </article>
-          <article class="why-card reveal">
-            <span class="why-num">03</span>
-            <h3>Worldwide shipping</h3>
-            <p>We ship worldwide, with stock in Thailand and the UK for collection or quick local post, and we send tracking details once your order is on its way.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="testing">
-      <div class="container">
-        <div class="lab-panel reveal">
-          <div class="lab-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <li class="badge reveal">
+            <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
               <path d="M14 3v5h5"/>
               <path d="m9 14 2 2 4-4"/>
             </svg>
-          </div>
-
-          <div class="lab-copy">
-            <p class="eyebrow">Lab testing</p>
-            <h2>Independently tested</h2>
-            <p>Our products are third-party lab tested, and Certificates of Analysis (CoAs) are available to share. Message us on WhatsApp and we'll send them to you.</p>
-          </div>
-
-          <div class="lab-action">
-            <a href="https://wa.me/447365234742?text=Hi%2C%20could%20you%20send%20the%20CoAs%3F" class="btn btn-gold" target="_blank" rel="noopener">Request CoAs on WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="order">
-      <div class="container">
-        <p class="eyebrow reveal">Process</p>
-        <h2 class="reveal">How to order</h2>
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step-num">1</span>
-            <h3>View the product list</h3>
-            <p>Our current product list is shared on WhatsApp. <a href="https://wa.me/447365234742" target="_blank" rel="noopener">Message us</a> and we'll send it straight over.</p>
+            <span>Certificates of Analysis available</span>
           </li>
-          <li class="step reveal">
-            <span class="step-num">2</span>
-            <h3>Tell us what you need</h3>
-            <p>Reply on WhatsApp with the items and quantities you'd like. We'll confirm availability.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">3</span>
-            <h3>Receive your quote</h3>
-            <p>We reply privately with your quote and payment instructions.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step-num">4</span>
-            <h3>Dispatch &amp; tracking</h3>
-            <p>Once your order is confirmed, we pack and dispatch it and send you the tracking details.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
 
-    <section class="section section-alt" id="delivery">
-      <div class="container">
-        <p class="eyebrow reveal">Delivery</p>
-        <h2 class="reveal">Delivery</h2>
-        <p class="section-sub reveal">Every order is sealed, labelled and packed with care before it leaves us. Here are a few recent deliveries.</p>
-
-        <div class="gallery">
-          <figure class="reveal">
-            <img src="assets/delivery-1.jpg" alt="Pepttaya branded pouch" loading="lazy" width="1200" height="1701">
-          </figure>
-          <figure class="reveal">
-            <img src="assets/delivery-2.jpg" alt="Pepttaya branded bag of vials" loading="lazy" width="1200" height="1702">
-          </figure>
-          <figure class="reveal">
-            <img src="assets/delivery-3.jpg" alt="Pepttaya vials on a countertop" loading="lazy" width="1200" height="1569">
-          </figure>
-          <figure class="reveal">
-            <img src="assets/delivery-4.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="1200" height="2201">
-          </figure>
-          <figure class="reveal">
-            <img src="assets/delivery-5.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="900" height="1200">
-          </figure>
-          <figure class="reveal">
-            <img src="assets/delivery-6.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="900" height="1200">
-          </figure>
-          <figure class="reveal">
-            <img src="assets/delivery-7.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="1200" height="566">
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="payments">
-      <div class="container">
-        <p class="eyebrow reveal">Payments</p>
-        <h2 class="reveal">Payments accepted</h2>
-        <div class="pay-grid">
-          <article class="pay-card reveal">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 7.5h4a2.25 2.25 0 0 1 0 4.5h-4zm0 4.5h4.5a2.25 2.25 0 0 1 0 4.5H9.5zM11 6v1.5M11 16.5V18M13 6v1.5M13 16.5V18"/></svg>
-            <h3>Crypto</h3>
-            <p>Ask on WhatsApp for details.</p>
-          </article>
-          <article class="pay-card reveal">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg>
-            <h3>Bank transfer</h3>
-            <p>Ask on WhatsApp for details.</p>
-          </article>
-          <article class="pay-card reveal">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
-            <h3>PayPal</h3>
-            <p>Ask on WhatsApp for details.</p>
-          </article>
-          <article class="pay-card reveal">
-            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/></svg>
-            <h3>Cash</h3>
-            <p>Ask on WhatsApp for details.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container narrow">
-        <p class="eyebrow reveal">FAQ</p>
-        <h2 class="reveal">Frequently asked questions</h2>
-
-        <div class="faq">
-          <details class="faq-item reveal" open>
-            <summary>How do I order?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <div class="faq-body">
-              <p>Message us on WhatsApp. We'll send you our current product list, you reply with the items and quantities you need, and we'll confirm availability and send your quote with payment instructions.</p>
-            </div>
-          </details>
-
-          <details class="faq-item reveal">
-            <summary>Where do you deliver, and how fast?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <div class="faq-body">
-              <p>We ship worldwide, and we hold stock in Thailand and the UK for collection or quick local post. We aim to get orders out quickly. Once your order is dispatched, we send you the tracking details on WhatsApp.</p>
-            </div>
-          </details>
-
-          <details class="faq-item reveal">
-            <summary>Can I see lab results?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <div class="faq-body">
-              <p>Yes. Our products are third-party lab tested, and Certificates of Analysis are available on request. <a href="https://wa.me/447365234742?text=Hi%2C%20could%20you%20send%20the%20CoAs%3F" target="_blank" rel="noopener">Ask for the CoAs on WhatsApp</a>.</p>
-            </div>
-          </details>
-
-          <details class="faq-item reveal">
-            <summary>Can I order several items at once?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <div class="faq-body">
-              <p>Yes. Just list everything you need, with quantities, in one WhatsApp message and we'll put it all on a single quote.</p>
-            </div>
-          </details>
-
-          <details class="faq-item reveal">
-            <summary>How should products be stored?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <div class="faq-body">
-              <p>Keep products sealed in their original packaging, in a cool, dry place away from direct light, and follow any storage directions on the label.</p>
-            </div>
-          </details>
-
-          <details class="faq-item reveal">
-            <summary>Are these products for human use?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <div class="faq-body">
-              <p>No. All products are sold strictly for laboratory research use only and are not for human or veterinary use. Buyers are responsible for complying with the laws that apply where they are.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="contact">
-      <div class="container narrow contact-box">
-        <div class="reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Get in touch</h2>
-          <p>We take enquiries and orders on WhatsApp only. Tap below to start a chat.</p>
-
-          <a href="https://wa.me/447365234742" class="btn btn-whatsapp" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-              <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/>
+          <li class="badge reveal">
+            <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7h11v9H3z"/>
+              <path d="M14 10h4l3 3v3h-7"/>
+              <circle cx="7" cy="18" r="1.8"/>
+              <circle cx="17" cy="18" r="1.8"/>
             </svg>
-            +44 7365 234742
-          </a>
+            <span>Shipped worldwide</span>
+          </li>
+
+          <li class="badge reveal">
+            <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/>
+              <path d="M9 12h6"/>
+            </svg>
+            <span>Research use only</span>
+          </li>
+
+          <li class="badge reveal">
+            <svg class="badge-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.1-4.6A9 9 0 1 1 21 12z"/>
+            </svg>
+            <span>Order on WhatsApp</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- UPDATED THREE-COLUMN PRODUCT GALLERY -->
+      <section class="section" id="available">
+        <div class="container">
+          <p class="eyebrow reveal">Availability</p>
+          <h2 class="reveal">What's available</h2>
+
+          <div class="avail-grid">
+            <article class="avail-card reveal" aria-labelledby="avail-ww">
+
+              <div class="product-grid">
+                <img src="assets/IMG_0441.webp" alt="Pepttaya research product 1" loading="lazy" width="200" height="200">
+                <img src="assets/IMG_0442.webp" alt="Pepttaya research product 2" loading="lazy" width="200" height="200">
+                <img src="assets/IMG_0443.webp" alt="Pepttaya research product 3" loading="lazy" width="200" height="200">
+                <img src="assets/IMG_0444.webp" alt="Pepttaya research product 4" loading="lazy" width="200" height="200">
+                <img src="assets/IMG_0445.webp" alt="Pepttaya research product 5" loading="lazy" width="200" height="200">
+                <img src="assets/IMG_0446.webp" alt="Pepttaya research product 6" loading="lazy" width="200" height="200">
+                <img src="assets/14B9EA66-07DA-4FB8-993D-F23362A1F835.png" alt="Pepttaya research product 7" loading="lazy" width="200" height="200">
+                <img src="assets/2A14D94C-EC98-486C-B86D-A28AD0EE1291.png" alt="Pepttaya research product 8" loading="lazy" width="200" height="200">
+                <img src="assets/35D5076B-DD14-4331-9F53-D2716AD83E2E.png" alt="Pepttaya research product 9" loading="lazy" width="200" height="200">
+                <img src="assets/6C724E05-FB58-468E-8025-3A5C28615793.png" alt="Pepttaya research product 10" loading="lazy" width="200" height="200">
+                <img src="assets/77E257E2-4EC5-4010-9964-FF1D7C0F216B.png" alt="Pepttaya research product 11" loading="lazy" width="200" height="200">
+                <img src="assets/960145F3-D8AA-4EE8-959B-934DC04C1A9B.png" alt="Pepttaya research product 12" loading="lazy" width="200" height="200">
+                <img src="assets/AC4EBC6C-AFC5-4BD6-BA43-000FA8D4F913.png" alt="Pepttaya research product 13" loading="lazy" width="200" height="200">
+                <img src="assets/D0581366-7C10-4123-9954-E90D1FE41E49.png" alt="Pepttaya research product 14" loading="lazy" width="200" height="200">
+                <img src="assets/EC42C355-6A32-4BAA-AED0-032D3E89AD1B.png" alt="Pepttaya research product 15" loading="lazy" width="200" height="200">
+                <img src="assets/5C50A1DD-C599-45D7-9EA1-C51216468EC1.png" alt="Pepttaya research product 16" loading="lazy" width="200" height="200">
+              </div>
+
+              <div class="avail-body">
+                <h3 class="avail-title" id="avail-ww">
+                  Available worldwide
+                  <svg class="flag" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="#f9b31d" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+                </h3>
+                <p>We ship worldwide, with stock held in Thailand and the UK for collection or quick local post. Message us on WhatsApp for the current list.</p>
+                <a href="https://wa.me/447365234742?text=Hi%20Pepttaya%2C%20can%20I%20see%20the%20current%20list%3F" class="btn btn-gold" target="_blank" rel="noopener">Get the current list on WhatsApp</a>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
+
+      <section class="section section-alt" id="about">
+        <div class="container narrow">
+          <p class="eyebrow reveal">About</p>
+          <h2 class="reveal">About Pepttaya</h2>
+          <p class="reveal">Pepttaya Labs supplies research chemicals and peptides to researchers who value a straightforward, dependable service. We keep ordering simple, communication clear and every parcel carefully packed, so you can focus on your work.</p>
+
+          <div class="cards">
+            <div class="card reveal">
+              <h3>Quality focus</h3>
+              <p>We take care over what we stock and how it is stored and handled, from our shelf to your door.</p>
+            </div>
+            <div class="card reveal">
+              <h3>Discreet, secure packaging</h3>
+              <p>Orders are sealed and packed securely in plain outer packaging to keep them protected and private in transit.</p>
+            </div>
+            <div class="card reveal">
+              <h3>Fast WhatsApp support</h3>
+              <p>Questions, quotes and order updates all happen in one chat, with quick, friendly replies from a real person.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="container">
+          <p class="eyebrow reveal">Why Pepttaya</p>
+          <h2 class="reveal">Why researchers choose us</h2>
+          <p class="section-sub reveal">A simple service built on a few things we can stand behind.</p>
+
+          <div class="why-grid">
+            <article class="why-card reveal">
+              <span class="why-num">01</span>
+              <h3>Third-party tested</h3>
+              <p>Our products are tested by an independent third-party laboratory, not just checked in-house.</p>
+            </article>
+            <article class="why-card reveal">
+              <span class="why-num">02</span>
+              <h3>CoAs on request</h3>
+              <p>Certificates of Analysis are available to share. Ask on WhatsApp and we'll send them over.</p>
+            </article>
+            <article class="why-card reveal">
+              <span class="why-num">03</span>
+              <h3>Worldwide shipping</h3>
+              <p>We ship worldwide, with stock in Thailand and the UK for collection or quick local post, and we send tracking details once your order is on its way.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="testing">
+        <div class="container">
+          <div class="lab-panel reveal">
+            <div class="lab-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 3v5h5"/>
+                <path d="m9 14 2 2 4-4"/>
+              </svg>
+            </div>
+
+            <div class="lab-copy">
+              <p class="eyebrow">Lab testing</p>
+              <h2>Independently tested</h2>
+              <p>Our products are third-party lab tested, and Certificates of Analysis (CoAs) are available to share. Message us on WhatsApp and we'll send them to you.</p>
+            </div>
+
+            <div class="lab-action">
+              <a href="https://wa.me/447365234742?text=Hi%2C%20could%20you%20send%20the%20CoAs%3F" class="btn btn-gold" target="_blank" rel="noopener">Request CoAs on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="order">
+        <div class="container">
+          <p class="eyebrow reveal">Process</p>
+          <h2 class="reveal">How to order</h2>
+          <ol class="steps">
+            <li class="step reveal">
+              <span class="step-num">1</span>
+              <h3>View the product list</h3>
+              <p>Our current product list is shared on WhatsApp. <a href="https://wa.me/447365234742" target="_blank" rel="noopener">Message us</a> and we'll send it straight over.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step-num">2</span>
+              <h3>Tell us what you need</h3>
+              <p>Reply on WhatsApp with the items and quantities you'd like. We'll confirm availability.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step-num">3</span>
+              <h3>Receive your quote</h3>
+              <p>We reply privately with your quote and payment instructions.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step-num">4</span>
+              <h3>Dispatch &amp; tracking</h3>
+              <p>Once your order is confirmed, we pack and dispatch it and send you the tracking details.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="delivery">
+        <div class="container">
+          <p class="eyebrow reveal">Delivery</p>
+          <h2 class="reveal">Delivery</h2>
+          <p class="section-sub reveal">Every order is sealed, labelled and packed with care before it leaves us. Here are a few recent deliveries.</p>
+
+          <div class="gallery">
+            <figure class="reveal">
+              <img src="assets/delivery-1.jpg" alt="Pepttaya branded pouch" loading="lazy" width="1200" height="1701">
+            </figure>
+            <figure class="reveal">
+              <img src="assets/delivery-2.jpg" alt="Pepttaya branded bag of vials" loading="lazy" width="1200" height="1702">
+            </figure>
+            <figure class="reveal">
+              <img src="assets/delivery-3.jpg" alt="Pepttaya vials on a countertop" loading="lazy" width="1200" height="1569">
+            </figure>
+            <figure class="reveal">
+              <img src="assets/delivery-4.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="1200" height="2201">
+            </figure>
+            <figure class="reveal">
+              <img src="assets/delivery-5.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="900" height="1200">
+            </figure>
+            <figure class="reveal">
+              <img src="assets/delivery-6.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="900" height="1200">
+            </figure>
+            <figure class="reveal">
+              <img src="assets/delivery-7.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="1200" height="566">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="payments">
+        <div class="container">
+          <p class="eyebrow reveal">Payments</p>
+          <h2 class="reveal">Payments accepted</h2>
+          <div class="pay-grid">
+            <article class="pay-card reveal">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 7.5h4a2.25 2.25 0 0 1 0 4.5h-4zm0 4.5h4.5a2.25 2.25 0 0 1 0 4.5H9.5zM11 6v1.5M11 16.5V18M13 6v1.5M13 16.5V18"/></svg>
+              <h3>Crypto</h3>
+              <p>Ask on WhatsApp for details.</p>
+            </article>
+            <article class="pay-card reveal">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg>
+              <h3>Bank transfer</h3>
+              <p>Ask on WhatsApp for details.</p>
+            </article>
+            <article class="pay-card reveal">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+              <h3>PayPal</h3>
+              <p>Ask on WhatsApp for details.</p>
+            </article>
+            <article class="pay-card reveal">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/></svg>
+              <h3>Cash</h3>
+              <p>Ask on WhatsApp for details.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container narrow">
+          <p class="eyebrow reveal">FAQ</p>
+          <h2 class="reveal">Frequently asked questions</h2>
+
+          <div class="faq">
+            <details class="faq-item reveal" open>
+              <summary>How do I order?<span class="faq-icon" aria-hidden="true"></span></summary>
+              <div class="faq-body">
+                <p>Message us on WhatsApp. We'll send you our current product list, you reply with the items and quantities you need, and we'll confirm availability and send your quote with payment instructions.</p>
+              </div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary>Where do you deliver, and how fast?<span class="faq-icon" aria-hidden="true"></span></summary>
+              <div class="faq-body">
+                <p>We ship worldwide, and we hold stock in Thailand and the UK for collection or quick local post. We aim to get orders out quickly. Once your order is dispatched, we send you the tracking details on WhatsApp.</p>
+              </div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary>Can I see lab results?<span class="faq-icon" aria-hidden="true"></span></summary>
+              <div class="faq-body">
+                <p>Yes. Our products are third-party lab tested, and Certificates of Analysis are available on request. <a href="https://wa.me/447365234742?text=Hi%2C%20could%20you%20send%20the%20CoAs%3F" target="_blank" rel="noopener">Ask for the CoAs on WhatsApp</a>.</p>
+              </div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary>Can I order several items at once?<span class="faq-icon" aria-hidden="true"></span></summary>
+              <div class="faq-body">
+                <p>Yes. Just list everything you need, with quantities, in one WhatsApp message and we'll put it all on a single quote.</p>
+              </div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary>How should products be stored?<span class="faq-icon" aria-hidden="true"></span></summary>
+              <div class="faq-body">
+                <p>Keep products sealed in their original packaging, in a cool, dry place away from direct light, and follow any storage directions on the label.</p>
+              </div>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary>Are these products for human use?<span class="faq-icon" aria-hidden="true"></span></summary>
+              <div class="faq-body">
+                <p>No. All products are sold strictly for laboratory research use only and are not for human or veterinary use. Buyers are responsible for complying with the laws that apply where they are.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="contact">
+        <div class="container narrow contact-box">
+          <div class="reveal">
+            <p class="eyebrow">Contact</p>
+            <h2>Get in touch</h2>
+            <p>We take enquiries and orders on WhatsApp only. Tap below to start a chat.</p>
+
+            <a href="https://wa.me/447365234742" class="btn btn-whatsapp" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/>
+              </svg>
+              +44 7365 234742
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Pepttaya logo" width="40" height="42">
+          <span>Pepttaya Labs</span>
+        </div>
+
+        <p class="disclaimer">All products are sold strictly for laboratory research use only. Not for human or veterinary use, and not for use as food, drugs, or cosmetics. Buyers are responsible for complying with the laws that apply where they are.</p>
+
+        <div class="footer-links">
+          <a href="terms.html">Terms</a>
+          <a href="https://wa.me/447365234742" target="_blank" rel="noopener">WhatsApp +44 7365 234742</a>
+        </div>
+
+        <p class="copy">&copy; <span id="year">2026</span> Pepttaya Labs. All rights reserved.</p>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="assets/logo.png" alt="Pepttaya logo" width="40" height="42">
-        <span>Pepttaya Labs</span>
+    <!-- Music player -->
+    <div class="music-player" id="music-player" role="region" aria-label="Background music">
+      <div class="music-pill">
+        <img src="assets/logo.png" alt="" class="music-logo" width="44" height="46" aria-hidden="true">
+
+        <button type="button" class="music-btn" id="music-btn" aria-pressed="false" aria-label="Play music">
+          <span class="music-icon" aria-hidden="true">
+            <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22">
+              <path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/>
+            </svg>
+            <svg class="icon-stop" viewBox="0 0 24 24" width="22" height="22">
+              <rect x="6" y="6" width="12" height="12" rx="2.2" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="music-label">Play music</span>
+        </button>
+
+        <label class="music-vol" for="music-volume">
+          <input type="range" id="music-volume" class="music-range" min="0" max="1" step="0.01" value="0.25" aria-label="Music volume">
+        </label>
       </div>
 
-      <p class="disclaimer">All products are sold strictly for laboratory research use only. Not for human or veterinary use, and not for use as food, drugs, or cosmetics. Buyers are responsible for complying with the laws that apply where they are.</p>
-
-      <div class="footer-links">
-        <a href="terms.html">Terms</a>
-        <a href="https://wa.me/447365234742" target="_blank" rel="noopener">WhatsApp +44 7365 234742</a>
-      </div>
-
-      <p class="copy">&copy; <span id="year">2026</span> Pepttaya Labs. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Music player -->
-  <div class="music-player" id="music-player" role="region" aria-label="Background music">
-    <div class="music-pill">
-      <img src="assets/logo.png" alt="" class="music-logo" width="44" height="46" aria-hidden="true">
-
-      <button type="button" class="music-btn" id="music-btn" aria-pressed="false" aria-label="Play music">
-        <span class="music-icon" aria-hidden="true">
-          <svg class="icon-play" viewBox="0 0 24 24" width="22" height="22">
-            <path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/>
-          </svg>
-          <svg class="icon-stop" viewBox="0 0 24 24" width="22" height="22">
-            <rect x="6" y="6" width="12" height="12" rx="2.2" fill="currentColor"/>
-          </svg>
+      <div class="music-now" id="music-now" aria-live="polite">
+        <span class="music-eq" aria-hidden="true">
+          <i></i><i></i><i></i><i></i>
         </span>
-        <span class="music-label">Play music</span>
-      </button>
+        <span class="music-now-text" id="music-now-text"></span>
+      </div>
 
-      <label class="music-vol" for="music-volume">
-        <input type="range" id="music-volume" class="music-range" min="0" max="1" step="0.01" value="0.25" aria-label="Music volume">
-      </label>
+      <audio id="music-audio" src="assets/music.mp3" preload="none" loop data-title="BALANÇÔ" data-artist="NELLIN"></audio>
     </div>
 
-    <div class="music-now" id="music-now" aria-live="polite">
-      <span class="music-eq" aria-hidden="true">
-        <i></i><i></i><i></i><i></i>
-      </span>
-      <span class="music-now-text" id="music-now-text"></span>
-    </div>
-
-    <audio id="music-audio" src="assets/music.mp3" preload="none" loop data-title="BALANÇÔ" data-artist="NELLIN"></audio>
-  </div>
-
-  <script src="script.js"></script>
-  <script src="gate.js"></script>
-  <script src="music.js"></script>
-</body>
+    <script src="script.js"></script>
+    <script src="gate.js"></script>
+    <script src="music.js"></script>
+  </body>
 </html>
