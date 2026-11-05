@@ -39,12 +39,73 @@
   function gateAccepted() { return !!ls(GATE_KEY); }
   function userStopped() { return ls(STOP_KEY) === '1'; }
 
+  // ---------- Playlist ----------
+  // To add songs, append { src, title, artist } entries. One track loops;
+  // several tracks play in order and wrap around.
+  var TRACKS = [
+    { src: audio.getAttribute('src') || 'assets/music.mp3', title: audio.getAttribute('data-title') || '', artist: audio.getAttribute('data-artist') || '' }
+  ];
+  var trackIdx = 0;
+  function trackName() {
+    var tr = TRACKS[trackIdx] || {};
+    return [tr.title, tr.artist].filter(Boolean).join(' \u2014 ');
+  }
+  function loadTrack(i) {
+    trackIdx = ((i % TRACKS.length) + TRACKS.length) % TRACKS.length;
+    var src = TRACKS[trackIdx].src;
+    if (audio.getAttribute('src') !== src) audio.setAttribute('src', src);
+    audio.loop = TRACKS.length === 1;
+  }
+  audio.addEventListener('ended', function () {
+    if (TRACKS.length < 2 || !wantPlaying) return;
+    loadTrack(trackIdx + 1);
+    var p = audio.play(); if (p && p.catch) p.catch(function () {});
+    setUI(true); saveState();
+  });
+
+  // ---------- Volume: Web Audio gain (works on iOS), fallback audio.volume ----------
+  // iOS Safari ignores HTMLMediaElement.volume, so once a user gesture allows
+  // it we route <audio> -> MediaElementSource -> GainNode -> speakers.
+  var AC = window.AudioContext || window.webkitAudioContext;
+  var actx = null, gainNode = null;
+  function getLevel() { return gainNode ? gainNode.gain.value : audio.volume; }
+  function setLevel(v) {
+    v = Math.max(0, Math.min(1, v));
+    if (gainNode) { gainNode.gain.value = v; if (audio.volume !== 1) audio.volume = 1; }
+    else audio.volume = v;
+  }
+  function buildIfRunning() {
+    if (!actx || gainNode || actx.state !== 'running') return;
+    var lvl = audio.volume;
+    var src = actx.createMediaElementSource(audio);   // only ever once per element
+    gainNode = actx.createGain();
+    gainNode.gain.value = lvl;
+    src.connect(gainNode); gainNode.connect(actx.destination);
+    audio.volume = 1;
+    window.__pepttayaGain = gainNode;
+  }
+  // Called inside user gestures: create the context once, resume it if suspended,
+  // and only reroute the audio once it is really running (never silences playback)
+  function ensureGraph() {
+    if (!AC) return;
+    if (!actx) { try { actx = new AC(); } catch (e) { AC = null; return; } }
+    if (actx.state === 'running') { buildIfRunning(); return; }
+    var p = actx.resume && actx.resume();
+    if (p && p.then) p.then(buildIfRunning, function () {}); else buildIfRunning();
+  }
+  ['pointerdown', 'touchend', 'click', 'keydown'].forEach(function (t) {
+    document.addEventListener(t, function (e) {
+      if (t === 'pointerdown' && e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
+      if (gainNode && actx.state === 'running') return;
+      ensureGraph();
+    }, true);
+  });
+
   var nowText = document.getElementById('music-now-text');
-  var trackName = [audio.getAttribute('data-title'), audio.getAttribute('data-artist')].filter(Boolean).join(' \u2014 ');
   function setUI(playing) {
     player.classList.toggle('is-playing', playing);
     if (nowText) {
-      var txt = playing ? (trackName ? 'Now playing \u00b7 ' + trackName : 'Now playing') : '';
+      var tn = trackName(); var txt = playing ? (tn ? 'Now playing \u00b7 ' + tn : 'Now playing') : '';
       if (nowText.textContent !== txt) nowText.textContent = txt;
     }
     btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
@@ -56,11 +117,11 @@
   // Interval-based so it still runs in background tabs
   function fadeTo(to, ms, done) {
     cancelFade();
-    var from = audio.volume, t0 = Date.now();
-    if (ms <= 0) { audio.volume = to; if (done) done(); return; }
+    var from = getLevel(), t0 = Date.now();
+    if (ms <= 0) { setLevel(to); if (done) done(); return; }
     fadeTimer = setInterval(function () {
       var k = Math.min(1, (Date.now() - t0) / ms);
-      audio.volume = Math.max(0, Math.min(1, from + (to - from) * k));
+      setLevel(from + (to - from) * k);
       if (k >= 1) { cancelFade(); if (done) done(); }
     }, 40);
   }
@@ -69,6 +130,7 @@
     ss(STATE_KEY, JSON.stringify({
       playing: wantPlaying && !audio.paused,
       t: audio.currentTime || 0,
+      i: trackIdx,
       v: targetVol(),
       ts: Date.now()
     }));
@@ -77,9 +139,9 @@
   // fadeMs: 3000 for a fresh start, 300 for a resume
   function start(fadeMs) {
     cancelFade();
-    audio.loop = true;
+    audio.loop = TRACKS.length === 1;
     audio.preload = 'auto';
-    audio.volume = 0;
+    setLevel(0);
     wantPlaying = true;
     var p;
     try { p = audio.play(); } catch (e) { p = null; }
@@ -143,7 +205,7 @@
       var v = Math.min(1, Math.max(0, parseFloat(slider.value) || 0));
       ls(VOL_KEY, String(v));
       cancelFade();
-      if (wantPlaying) audio.volume = v;
+      if (wantPlaying) setLevel(v);
       paintVol(v);
       saveState();
     };
@@ -239,10 +301,12 @@
   placePlayer();
 
   // ---------- Initial state on a full page load ----------
+  loadTrack(trackIdx);
   setUI(false);
   var saved = null;
   try { saved = JSON.parse(ss(STATE_KEY) || 'null'); } catch (e) {}
   if (!userStopped()) {
+    if (saved && typeof saved.i === 'number' && saved.i !== trackIdx) loadTrack(saved.i);
     if (saved && saved.playing && typeof saved.t === 'number') {
       // Resume from the same point (plus the moment spent loading)
       var t = saved.t + Math.min(3, Math.max(0, (Date.now() - (saved.ts || Date.now())) / 1000));
