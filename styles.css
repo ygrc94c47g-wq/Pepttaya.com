@@ -525,3 +525,13 @@ html.gate-open .age-gate { padding-bottom: 140px; }
   #delivery .gallery { grid-template-columns: repeat(2, 1fr); max-width: 360px; gap: 12px; }
   #delivery .gallery figure { border-radius: 12px; }
 }
+
+/* Payments accepted */
+.pay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.pay-card { position: relative; overflow: hidden; background: var(--navy); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 22px 26px; text-align: center; transition: border-color .25s; }
+.pay-card:hover { border-color: rgba(249, 179, 29, .45); }
+.pay-card::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--ocean), var(--gold), var(--sunset)); }
+.pay-card svg { color: var(--gold); margin-bottom: 12px; }
+.pay-card h3 { margin: 0 0 6px; font-size: 1.1rem; }
+.pay-card p { color: var(--muted); margin: 0; font-size: .9rem; }
+@media (max-width: 760px) { .pay-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } .pay-card { padding: 22px 14px 20px; } }
