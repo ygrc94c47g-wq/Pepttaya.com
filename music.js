@@ -1,6 +1,6 @@
 // Pepttaya: background music player
-// - small logo + big play/stop button + volume slider
-// - fades in from silence; remembers volume and a user "Stop"
+// - small logo + big play/stop button; fixed 25% volume
+// - fades in from silence; remembers a user "Stop"
 // - starts on the 21+ gate itself: tries autoplay on load, else on the first
 //   tap/click/key anywhere (e.g. ticking a gate checkbox); Enter keeps it going
 // - returning visitors: same (autoplay on load, else first tap/click/key)
@@ -11,13 +11,11 @@
   var player = document.getElementById('music-player');
   var btn = document.getElementById('music-btn');
   var audio = document.getElementById('music-audio');
-  var slider = document.getElementById('music-volume');
   if (!player || !btn || !audio) return;
 
   var label = btn.querySelector('.music-label');
   var root = document.documentElement;
   var GATE_KEY = 'pepttaya_gate_v1';
-  var VOL_KEY = 'pepttaya_music_volume';
   var STOP_KEY = 'pepttaya_music_stopped';
   var STATE_KEY = 'pepttaya_music_state';
   var DEFAULT_VOL = 0.25;
@@ -32,10 +30,7 @@
   function ss(k, v) {
     try { if (v === undefined) return sessionStorage.getItem(k); sessionStorage.setItem(k, v); } catch (e) { return null; }
   }
-  function targetVol() {
-    var v = parseFloat(ls(VOL_KEY));
-    return isNaN(v) ? DEFAULT_VOL : Math.min(1, Math.max(0, v));
-  }
+  function targetVol() { return DEFAULT_VOL; }
   function gateAccepted() { return !!ls(GATE_KEY); }
   function userStopped() { return ls(STOP_KEY) === '1'; }
 
@@ -46,10 +41,7 @@
     { src: audio.getAttribute('src') || 'assets/music.mp3', title: audio.getAttribute('data-title') || '', artist: audio.getAttribute('data-artist') || '' }
   ];
   var trackIdx = 0;
-  function trackName() {
-    var tr = TRACKS[trackIdx] || {};
-    return [tr.title, tr.artist].filter(Boolean).join(' \u2014 ');
-  }
+
   function loadTrack(i) {
     trackIdx = ((i % TRACKS.length) + TRACKS.length) % TRACKS.length;
     var src = TRACKS[trackIdx].src;
@@ -101,13 +93,9 @@
     }, true);
   });
 
-  var nowText = document.getElementById('music-now-text');
   function setUI(playing) {
     player.classList.toggle('is-playing', playing);
-    if (nowText) {
-      var tn = trackName(); var txt = playing ? (tn ? 'Now playing \u00b7 ' + tn : 'Now playing') : '';
-      if (nowText.textContent !== txt) nowText.textContent = txt;
-    }
+
     btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
     btn.setAttribute('aria-label', playing ? 'Stop music' : 'Play music');
     if (label) label.textContent = playing ? 'Stop music' : 'Play music';
@@ -174,7 +162,6 @@
   var GESTURES = ['pointerdown', 'keydown', 'touchend', 'click'];
   function onFirstGesture(e) {
     if (btn.contains(e.target)) { disarmGesture(); return; }
-    if (slider && slider.contains(e.target)) return;
     if (userStopped() || wantPlaying) { disarmGesture(); return; }
     // A touch pointerdown is not a user activation yet; wait for touchend/click
     if (e.type === 'pointerdown' && e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
@@ -197,22 +184,6 @@
     if (wantPlaying) { ls(STOP_KEY, '1'); stop(); }
     else { ls(STOP_KEY, null); start(3000).catch(function () {}); }
   });
-
-  function paintVol(v) { player.style.setProperty('--vol', Math.round(v * 100) + '%'); }
-  if (slider) {
-    slider.value = String(targetVol());
-    var setVol = function () {
-      var v = Math.min(1, Math.max(0, parseFloat(slider.value) || 0));
-      ls(VOL_KEY, String(v));
-      cancelFade();
-      if (wantPlaying) setLevel(v);
-      paintVol(v);
-      saveState();
-    };
-    slider.addEventListener('input', setVol);
-    slider.addEventListener('change', setVol);
-    paintVol(targetVol());
-  }
 
   audio.addEventListener('playing', function () { if (wantPlaying) setUI(true); });
 

@@ -370,33 +370,6 @@ html.gate-reading .gate-readbar {
   box-shadow: 0 18px 40px -14px rgba(0, 0, 0, .75), 0 0 0 1px rgba(4, 112, 205, .18) inset;
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
-/* Now playing label (below the controls, inside the same fixed container) */
-.music-now {
-  display: flex; align-items: center; gap: 8px; max-width: 100%;
-  margin: 0 0 0 14px; padding: 0 14px; max-height: 0; overflow: hidden; opacity: 0;
-  border-radius: 0 0 14px 14px;
-  background: #000f2a; border: 1px solid transparent; border-top: 0;
-  color: var(--text); font-family: var(--font-sans); font-size: .8rem; font-weight: 600; letter-spacing: .02em;
-  transition: max-height .3s ease, opacity .3s ease, padding .3s ease;
-}
-.music-player.is-playing .music-now {
-  max-height: 40px; opacity: 1; padding: 6px 14px 7px;
-  border-color: rgba(249, 179, 29, .35);
-}
-.music-now-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
-.music-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; flex: 0 0 auto; }
-.music-eq i { display: block; width: 3px; height: 40%; border-radius: 1px; background: var(--gold); }
-.music-player.is-playing .music-eq i { animation: musicEq 1s ease-in-out infinite; }
-.music-eq i:nth-child(2) { animation-delay: -.35s !important; background: var(--gold-soft); }
-.music-eq i:nth-child(3) { animation-delay: -.7s !important; background: var(--sunset); }
-.music-eq i:nth-child(4) { animation-delay: -.15s !important; }
-@keyframes musicEq { 0%, 100% { height: 25%; } 50% { height: 100%; } }
-@media (prefers-reduced-motion: reduce) {
-  .music-player.is-playing .music-eq i { animation: none; }
-  .music-eq i:nth-child(1) { height: 55%; } .music-eq i:nth-child(2) { height: 90%; }
-  .music-eq i:nth-child(3) { height: 70%; } .music-eq i:nth-child(4) { height: 40%; }
-  .music-now { transition: none; }
-}
 /* Player stays usable on the 21+ gate: above the overlay, gate content kept clear of it */
 html.gate-open .music-player { z-index: 1010; }
 html.gate-open .age-gate { padding-bottom: 140px; }
@@ -437,39 +410,12 @@ html.gate-open .age-gate { padding-bottom: 140px; }
 @media (max-width: 480px) {
   .music-player { left: 12px; bottom: 10px; }
   .music-pill { gap: 10px; padding: 6px 6px 6px 8px; }
-  .music-now { font-size: .76rem; }
   .music-logo { width: 40px; }
   .music-btn { min-height: 56px; font-size: 1rem; padding: 0 22px 0 10px; }
   .music-icon { width: 36px; height: 36px; }
 }
 
-/* Music volume slider */
-.music-vol { display: flex; align-items: center; padding: 0 10px 0 2px; cursor: pointer; }
-.music-range {
-  --vol: 25%;
-  -webkit-appearance: none; appearance: none; width: 110px; height: 32px; margin: 0;
-  background: transparent; cursor: pointer;
-}
-.music-player { --vol: 25%; }
-.music-range::-webkit-slider-runnable-track {
-  height: 6px; border-radius: 999px;
-  background: linear-gradient(90deg, var(--ocean-light), var(--ocean)) 0 0 / var(--vol) 100% no-repeat, rgba(255, 255, 255, .16);
-}
-.music-range::-moz-range-track { height: 6px; border-radius: 999px; background: rgba(255, 255, 255, .16); }
-.music-range::-moz-range-progress { height: 6px; border-radius: 999px; background: var(--ocean); }
-.music-range::-webkit-slider-thumb {
-  -webkit-appearance: none; appearance: none; width: 22px; height: 22px; margin-top: -8px; border-radius: 50%;
-  background: var(--gold); border: 3px solid var(--navy); box-shadow: 0 0 0 2px rgba(249, 179, 29, .45), 0 4px 10px rgba(0, 0, 0, .5);
-}
-.music-range::-moz-range-thumb {
-  width: 18px; height: 18px; border-radius: 50%;
-  background: var(--gold); border: 3px solid var(--navy); box-shadow: 0 0 0 2px rgba(249, 179, 29, .45);
-}
-.music-range:focus-visible { outline: 3px solid var(--ocean-light); outline-offset: 4px; border-radius: 8px; }
-@media (max-width: 480px) {
-  .music-vol { padding: 0 8px 0 0; }
-  .music-range { width: 84px; }
-}
+
 
 /* ==========================================================
    What's available (Thailand + UK)
@@ -536,4 +482,13 @@ html.gate-open .age-gate { padding-bottom: 140px; }
 .pay-card h3 { margin: 0 0 6px; font-size: 1.1rem; }
 .pay-card p { color: var(--muted); margin: 0; font-size: .9rem; }
 @media (max-width: 760px) { .pay-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } .pay-card { padding: 22px 14px 20px; } }
-.music-range { touch-action: none; }
+
+
+/* Native product disclosure: grid and image sizing are unchanged. */
+.product-disclosure { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--navy); }
+.product-disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding: 14px 18px; color: var(--gold-soft); font-weight: 600; cursor: pointer; list-style: none; }
+.product-disclosure > summary::-webkit-details-marker { display: none; }
+.product-disclosure > summary::after { content: "+"; font-size: 1.5rem; line-height: 1; }
+.product-disclosure[open] > summary::after { content: "−"; }
+.product-disclosure > summary:hover { background: rgba(249, 179, 29, .06); }
+.product-disclosure > summary:focus-visible { outline: 3px solid var(--gold); outline-offset: -4px; }

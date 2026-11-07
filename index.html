@@ -197,6 +197,8 @@
           <div class="avail-grid">
             <article class="avail-card reveal" aria-labelledby="avail-ww">
 
+              <details class="product-disclosure">
+                <summary>View available products</summary>
               <div class="product-grid">
                 <img src="assets/IMG_0441.webp" alt="Pepttaya research product 1" loading="lazy" width="200" height="200">
                 <img src="assets/IMG_0442.webp" alt="Pepttaya research product 2" loading="lazy" width="200" height="200">
@@ -220,6 +222,7 @@
                 <img src="assets/E9C8DAF8-2E57-4505-A2CE-6C1D31FB3ADE.png" alt="Pepttaya research product 20" loading="lazy" width="200" height="200">
                 <img src="assets/F7C4FABE-6D23-4E0F-BE3A-A2CB2FF576DC.png" alt="Pepttaya research product 21" loading="lazy" width="200" height="200">
               </div>
+              </details>
 
               <div class="avail-body">
                 <h3 class="avail-title" id="avail-ww">
@@ -504,17 +507,8 @@
           <span class="music-label">Play music</span>
         </button>
 
-        <label class="music-vol" for="music-volume">
-          <input type="range" id="music-volume" class="music-range" min="0" max="1" step="0.01" value="0.25" aria-label="Music volume">
-        </label>
       </div>
 
-      <div class="music-now" id="music-now" aria-live="polite">
-        <span class="music-eq" aria-hidden="true">
-          <i></i><i></i><i></i><i></i>
-        </span>
-        <span class="music-now-text" id="music-now-text"></span>
-      </div>
 
       <audio id="music-audio" src="assets/music.mp3" preload="none" loop data-title="BALANÇÔ" data-artist="NELLIN"></audio>
     </div>
