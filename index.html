@@ -345,31 +345,39 @@
           <h2 class="reveal">Delivery</h2>
           <p class="section-sub reveal">Every order is sealed, labelled and packed with care before it leaves us. Here are a few recent deliveries.</p>
 
-          <div class="gallery">
-            <figure class="reveal">
+          <div class="delivery-carousel" role="region" aria-roledescription="carousel" aria-label="Successful deliveries">
+          <div class="delivery-slides">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="1 of 8">
               <img src="assets/delivery-1.jpg" alt="Pepttaya branded pouch" loading="lazy" width="1200" height="1701">
             </figure>
-            <figure class="reveal">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="2 of 8" hidden>
               <img src="assets/delivery-2.jpg" alt="Pepttaya branded bag of vials" loading="lazy" width="1200" height="1702">
             </figure>
-            <figure class="reveal">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="3 of 8" hidden>
               <img src="assets/delivery-3.jpg" alt="Pepttaya vials on a countertop" loading="lazy" width="1200" height="1569">
             </figure>
-            <figure class="reveal">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="4 of 8" hidden>
               <img src="assets/delivery-4.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="1200" height="2201">
             </figure>
-            <figure class="reveal">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="5 of 8" hidden>
               <img src="assets/delivery-5.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="900" height="1200">
             </figure>
-            <figure class="reveal">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="6 of 8" hidden>
               <img src="assets/delivery-6.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="900" height="1200">
             </figure>
-            <figure class="reveal">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="7 of 8" hidden>
               <img src="assets/delivery-7.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="1200" height="566">
             </figure>
-            <figure class="reveal">
+            <figure class="delivery-slide" role="group" aria-roledescription="slide" aria-label="8 of 8" hidden>
               <img src="assets/delivery-8.jpg" alt="Pepttaya delivery packaging" loading="lazy" width="900" height="1200">
             </figure>
+          </div>
+            <div class="delivery-controls">
+              <button type="button" data-delivery-prev aria-label="Previous delivery photo">&#8592;</button>
+              <span class="delivery-count" aria-live="off">1 / 8</span>
+              <button type="button" data-delivery-next aria-label="Next delivery photo">&#8594;</button>
+              <button type="button" data-delivery-pause aria-label="Pause automatic delivery slideshow">Pause</button>
+            </div>
           </div>
         </div>
       </section>

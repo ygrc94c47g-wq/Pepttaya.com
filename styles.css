@@ -454,24 +454,18 @@ html.gate-open .age-gate { padding-bottom: 140px; }
   .avail-soon .avail-body { min-height: 200px; }
 }
 
-/* ==========================================================
-   Delivery gallery: smaller thumbnails (scoped to #delivery)
-   ========================================================== */
-#delivery .gallery { max-width: 760px; margin-inline: auto; gap: 16px; grid-template-columns: repeat(4, 1fr); }
-#delivery .gallery figure { border-radius: 14px; }
-#delivery .gallery img { display: block; }
-#delivery .gallery img[src$="delivery-4.jpg"] { object-position: 50% 15%; }
-#delivery .gallery img[src$="delivery-5.jpg"] { object-position: 57% 55%; }
-#delivery .gallery img[src$="delivery-6.jpg"] { object-position: 50% 52%; }
-#delivery .gallery img[src$="delivery-7.jpg"] { object-position: 33% 50%; }
-#delivery .gallery img[src$="delivery-8.jpg"] { object-position: 50% 42%; }
-@media (max-width: 960px) {
-  #delivery .gallery { grid-template-columns: repeat(4, 1fr); max-width: 640px; gap: 14px; }
-}
-@media (max-width: 760px) {
-  #delivery .gallery { grid-template-columns: repeat(2, 1fr); max-width: 360px; gap: 12px; }
-  #delivery .gallery figure { border-radius: 12px; }
-}
+/* Delivery carousel: full uncropped photos, one large slide at a time. */
+.delivery-carousel { width: 100%; max-width: 480px; margin: 0 auto; min-width: 0; }
+.delivery-slides { aspect-ratio: 3 / 4; background: var(--navy); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.delivery-slide { margin: 0; width: 100%; height: 100%; }
+.delivery-slide[hidden] { display: none; }
+.delivery-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.delivery-controls { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; padding-top: 16px; }
+.delivery-controls button { min-width: 48px; min-height: 48px; padding: 10px 16px; background: var(--navy); border: 1px solid var(--gold); border-radius: 999px; color: var(--gold-soft); font: inherit; cursor: pointer; }
+.delivery-controls button:hover { background: rgba(249, 179, 29, .12); }
+.delivery-controls button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.delivery-count { color: var(--muted); min-width: 48px; text-align: center; }
+
 
 /* Payments accepted */
 .pay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
