@@ -22,7 +22,7 @@
   }
   function siblings() {
     return Array.prototype.filter.call(document.body.children, function (el) {
-      return el !== gate && el !== readbar && el.id !== 'music-player' && el.tagName !== 'SCRIPT';
+      return el !== gate && el !== readbar && el.id !== 'music-player' && !el.classList.contains('floating-whatsapp') && el.tagName !== 'SCRIPT';
     });
   }
   function setInert(on) {
