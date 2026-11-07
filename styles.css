@@ -456,9 +456,11 @@ html.gate-open .age-gate { padding-bottom: 140px; }
 
 /* Delivery carousel: full uncropped photos, one large slide at a time. */
 .delivery-carousel { width: 100%; max-width: 480px; margin: 0 auto; min-width: 0; }
-.delivery-slides { aspect-ratio: 3 / 4; background: var(--navy); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
-.delivery-slide { margin: 0; width: 100%; height: 100%; }
+.delivery-slides { position: relative; aspect-ratio: 3 / 4; background: var(--navy); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.delivery-slide { position: absolute; inset: 0; margin: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; transition: opacity 500ms ease; }
+.delivery-slide.is-active { opacity: 1; z-index: 1; }
 .delivery-slide[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .delivery-slide { transition: none; } }
 .delivery-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .delivery-controls { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; padding-top: 16px; }
 .delivery-controls button { min-width: 48px; min-height: 48px; padding: 10px 16px; background: var(--navy); border: 1px solid var(--gold); border-radius: 999px; color: var(--gold-soft); font: inherit; cursor: pointer; }

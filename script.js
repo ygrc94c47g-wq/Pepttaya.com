@@ -50,7 +50,13 @@
   function clear() { if (timer !== null) clearInterval(timer); timer = null; }
   function show(n) {
     index = (n + slides.length) % slides.length;
-    slides.forEach(function (slide, i) { slide.hidden = i !== index; });
+    slides.forEach(function (slide, i) {
+      // Opacity allows outgoing and incoming images to overlap without a blank
+      // frame. aria-hidden removes inactive images from the accessibility tree.
+      slide.hidden = false;
+      slide.classList.toggle('is-active', i === index);
+      slide.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+    });
     count.textContent = (index + 1) + ' / ' + slides.length;
   }
   function schedule() {
