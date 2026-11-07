@@ -505,3 +505,13 @@ html.gate-open .floating-whatsapp { z-index: 1010; }
 /* Keep fixed controls out of the way while reading the gate's terms bar. */
 html.gate-reading .floating-whatsapp { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
 .delivery-carousel { scroll-margin-bottom: 90px; }
+
+/* Music drawer: only the 44px tab is visible until hover/focus/tap. */
+.music-player { flex-direction: row; align-items: center; gap: 0; }
+.music-tab { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); background: var(--navy); color: var(--gold-soft); cursor: pointer; }
+.music-tab:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.music-player .music-pill { max-width: 0; padding: 0; gap: 0; border-width: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-width .2s ease, opacity .2s ease; }
+.music-player.controls-open .music-pill { max-width: 146px; padding: 4px; border-width: 1px; opacity: 1; visibility: visible; margin-left: 4px; }
+.music-player .music-logo { display: none; }
+.music-player .music-btn { flex-shrink: 0; }
+@media (prefers-reduced-motion: reduce) { .music-player .music-pill { transition: none; } }

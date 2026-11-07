@@ -13,6 +13,29 @@
   var audio = document.getElementById('music-audio');
   if (!player || !btn || !audio) return;
 
+  // Compact drawer: hover/focus desktop, explicit toggle for touch.
+  var tab = player.querySelector('.music-tab');
+  var controls = player.querySelector('.music-pill');
+  var pinned = false, hovering = false;
+  function drawer(open) {
+    player.classList.toggle('controls-open', open);
+    if (controls) controls.inert = !open;
+    if (tab) {
+      tab.setAttribute('aria-expanded', String(open));
+      tab.setAttribute('aria-label', open ? 'Hide music controls' : 'Show music controls');
+    }
+  }
+  if (tab && controls) {
+    tab.addEventListener('click', function () { pinned = !pinned; drawer(pinned); });
+    player.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'touch') { hovering = true; drawer(true); } });
+    player.addEventListener('pointerleave', function (e) { if (e.pointerType !== 'touch') { hovering = false; if (!pinned && !player.contains(document.activeElement)) drawer(false); } });
+    player.addEventListener('focusin', function () { drawer(true); });
+    player.addEventListener('focusout', function (e) { if (!player.contains(e.relatedTarget) && !pinned && !hovering) drawer(false); });
+    document.addEventListener('pointerdown', function (e) { if (!player.contains(e.target)) { pinned = false; drawer(false); } });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && player.classList.contains('controls-open')) { pinned = false; tab.focus(); drawer(false); } });
+    drawer(false);
+  }
+
   var label = btn.querySelector('.music-label');
   var root = document.documentElement;
   var GATE_KEY = 'pepttaya_gate_v1';
@@ -161,6 +184,7 @@
   // Fallback when the browser blocks autoplay: start on the first interaction
   var GESTURES = ['pointerdown', 'keydown', 'touchend', 'click'];
   function onFirstGesture(e) {
+    if (tab && tab.contains(e.target)) return;
     if (btn.contains(e.target)) { disarmGesture(); return; }
     if (userStopped() || wantPlaying) { disarmGesture(); return; }
     // A touch pointerdown is not a user activation yet; wait for touchend/click

@@ -85,7 +85,8 @@
   </a>
 
   <div class="music-player" id="music-player" role="region" aria-label="Background music">
-    <div class="music-pill">
+    <button type="button" class="music-tab" aria-label="Show music controls" aria-expanded="false" aria-controls="music-controls"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9 4v11.2a3 3 0 1 0 2 2.8V7l8-2v8.2a3 3 0 1 0 2 2.8V1L9 4Z"/></svg></button>
+      <div class="music-pill" id="music-controls" inert>
       <img src="assets/logo.png" alt="" class="music-logo" width="44" height="46" aria-hidden="true">
       <button type="button" class="music-btn" id="music-btn" aria-pressed="false" aria-label="Play music">
       <span class="music-icon" aria-hidden="true">
