@@ -259,7 +259,7 @@ p { margin: 0 0 1em; }
    ========================================================== */
 .age-gate { display: none; }
 html.gate-open, html.gate-open body { overflow: hidden; }
-html.gate-open body > *:not(.age-gate):not(.gate-readbar):not(.music-player):not(script) {
+html.gate-open body > *:not(.age-gate):not(.gate-readbar):not(.music-player):not(.floating-whatsapp):not(script) {
   filter: blur(14px); pointer-events: none; user-select: none;
 }
 html.gate-open .age-gate {
@@ -488,3 +488,20 @@ html.gate-open .age-gate { padding-bottom: 140px; }
 .product-disclosure[open] > summary::after { content: "−"; }
 .product-disclosure > summary:hover { background: rgba(249, 179, 29, .06); }
 .product-disclosure > summary:focus-visible { outline: 3px solid var(--gold); outline-offset: -4px; }
+
+/* Compact fixed contact/music controls, clear of phone safe areas. */
+.music-player { left: calc(12px + env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+.music-pill { gap: 6px; padding: 4px 4px 4px 6px; }
+.music-logo { width: 28px; }
+.music-btn { min-height: 44px; padding: 0 12px 0 6px; gap: 6px; font-size: .85rem; box-shadow: none; }
+.music-icon { width: 26px; height: 26px; }
+.music-icon svg { width: 16px; height: 16px; }
+.music-player.is-playing .music-btn::before, .music-player.is-playing .music-btn::after { display: none; }
+.music-player.is-playing .music-btn { box-shadow: 0 0 10px rgba(249, 179, 29, .25); }
+.floating-whatsapp { position: fixed; right: calc(12px + env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 70; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #072c18; border: 1px solid rgba(249, 179, 29, .55); box-shadow: 0 6px 22px rgba(0, 0, 0, .35); }
+.floating-whatsapp:hover { background: #58e28c; color: #072c18; }
+.floating-whatsapp:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+html.gate-open .floating-whatsapp { z-index: 1010; }
+/* Keep fixed controls out of the way while reading the gate's terms bar. */
+html.gate-reading .floating-whatsapp { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
+.delivery-carousel { scroll-margin-bottom: 90px; }
