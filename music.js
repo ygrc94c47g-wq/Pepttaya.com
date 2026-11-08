@@ -53,7 +53,25 @@
   function ss(k, v) {
     try { if (v === undefined) return sessionStorage.getItem(k); sessionStorage.setItem(k, v); } catch (e) { return null; }
   }
-  function targetVol() { return DEFAULT_VOL; }
+  var videoHasSound = false;
+  function targetVol() { return videoHasSound ? 0 : DEFAULT_VOL; }
+  // The background track yields to any audible video. No second soundtrack;
+  // stopping music is still remembered, and muting/pausing video restores it.
+  function syncVideoSound() {
+    var audible = Array.prototype.some.call(document.querySelectorAll('video'), function (v) {
+      return !v.paused && !v.ended && !v.muted && v.volume > 0;
+    });
+    if (audible !== videoHasSound) {
+      videoHasSound = audible;
+      if (wantPlaying) fadeTo(targetVol(), 250);
+    }
+  }
+  ['play', 'playing', 'pause', 'ended', 'volumechange', 'emptied'].forEach(function (t) {
+    document.addEventListener(t, function (e) { if (e.target.tagName === 'VIDEO') {
+      if (t === 'play') document.querySelectorAll('video').forEach(function (v) { if (v !== e.target && !v.paused) v.pause(); });
+      syncVideoSound();
+    } }, true);
+  });
   function gateAccepted() { return !!ls(GATE_KEY); }
   function userStopped() { return ls(STOP_KEY) === '1'; }
 
@@ -262,6 +280,7 @@
       var canon = document.querySelector('link[rel=canonical]'), nc = doc.querySelector('link[rel=canonical]');
       if (canon && nc) canon.setAttribute('href', nc.getAttribute('href'));
       if (push) history.pushState({ softnav: true }, '', url);
+      syncVideoSound();
       rerun('script.js');   // menu, reveal-on-scroll, year
       rerun('gate.js');     // gate state for the new page (already accepted)
       var hash = new URL(url, location.href).hash;

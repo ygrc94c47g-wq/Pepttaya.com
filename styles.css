@@ -513,3 +513,18 @@ html.gate-open .floating-whatsapp { z-index: 1010; }
 .music-player .music-logo { display: none; }
 .music-player .music-btn { flex-shrink: 0; }
 @media (prefers-reduced-motion: reduce) { .music-player .music-pill { transition: none; } }
+
+/* Behind the scenes: native, opt-in video; uncropped media and subtle branding. */
+.scene-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; align-items: start; max-width: 820px; margin-inline: auto; }
+.scene-card { width: 100%; max-width: 380px; margin-inline: auto; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: var(--navy-2); transition: border-color .3s ease, box-shadow .3s ease; }
+.scene-card:hover, .scene-card:focus-within { border-color: rgba(249, 179, 29, .6); box-shadow: 0 12px 32px rgba(0, 0, 0, .18); }
+.scene-media { background: var(--navy); }
+.scene-media video { display: block; width: 100%; height: auto; object-fit: contain; }
+.scene-media video:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+.scene-caption { padding: 22px; border-top: 1px solid rgba(249, 179, 29, .3); }
+.scene-caption h3 { font-size: 1.25rem; }
+.scene-caption p { color: var(--muted); margin: 0; font-size: .92rem; }
+@media (prefers-reduced-motion: reduce) { .scene-card { transition: none; } }
+
+@media (max-width: 960px) { .scene-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .scene-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
