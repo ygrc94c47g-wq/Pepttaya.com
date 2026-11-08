@@ -315,10 +315,11 @@
         <div class="container">
           <p class="eyebrow reveal">A closer look</p>
           <h2 class="reveal" id="behind-scenes-title">Behind the scenes</h2>
-          <p class="section-sub reveal">Short clips of the process. Press play to take a closer look, with original sound available through the video controls.</p>
-          <!-- Add each approved clip as a scene-card with a unique heading ID, MP4 and poster. -->
+          <p class="section-sub reveal">Explore four short clips. Videos play muted when in view and advance at the end. Use the controls to pause, stop or browse; original sound is optional.</p>
+          <!-- Add approved clips as scene-card slides; the carousel discovers them automatically. -->
+          <div class="scene-carousel" role="region" aria-roledescription="carousel" aria-label="Behind the scenes videos">
           <div class="scene-grid">
-            <article class="scene-card reveal" aria-labelledby="scene-vial-title">
+            <article class="scene-card" aria-labelledby="scene-vial-title">
               <div class="scene-media">
                 <video controls muted playsinline preload="none" poster="assets/behind-scenes/vial-handling-poster.jpg" width="464" height="888" aria-label="Vial handling — video with optional machinery sound">
                   <source src="assets/behind-scenes/vial-handling.mp4" type="video/mp4">
@@ -330,7 +331,7 @@
                 <p>Vials moving through guide channels and a rotating wheel.</p>
               </div>
             </article>
-            <article class="scene-card reveal" aria-labelledby="scene-tray-collection-title">
+            <article class="scene-card" aria-labelledby="scene-tray-collection-title">
               <div class="scene-media">
                 <video controls muted playsinline preload="none" poster="assets/behind-scenes/tray-collection-poster.jpg" width="464" height="888" aria-label="Tray collection — video with optional machinery sound">
                   <source src="assets/behind-scenes/tray-collection.mp4" type="video/mp4">
@@ -342,7 +343,7 @@
                 <p>Gloved hands grouping vials onto a metal tray.</p>
               </div>
             </article>
-            <article class="scene-card reveal" aria-labelledby="scene-conveyor-movement-title">
+            <article class="scene-card" aria-labelledby="scene-conveyor-movement-title">
               <div class="scene-media">
                 <video controls muted playsinline preload="none" poster="assets/behind-scenes/conveyor-movement-poster.jpg" width="464" height="888" aria-label="Conveyor movement — video with optional machinery sound">
                   <source src="assets/behind-scenes/conveyor-movement.mp4" type="video/mp4">
@@ -354,7 +355,7 @@
                 <p>Vials moving along curved conveyor guides.</p>
               </div>
             </article>
-            <article class="scene-card reveal" aria-labelledby="scene-rotary-equipment-title">
+            <article class="scene-card" aria-labelledby="scene-rotary-equipment-title">
               <div class="scene-media">
                 <video controls muted playsinline preload="none" poster="assets/behind-scenes/rotary-equipment-poster.jpg" width="464" height="888" aria-label="Rotary equipment — video with optional machinery sound">
                   <source src="assets/behind-scenes/rotary-equipment.mp4" type="video/mp4">
@@ -366,6 +367,15 @@
                 <p>A closer look at vials passing through rotary equipment.</p>
               </div>
             </article>
+          </div>
+            <div class="scene-controls">
+              <button type="button" data-scene-prev aria-label="Previous video">&#8592;</button>
+              <button type="button" data-scene-play>Play</button>
+              <button type="button" data-scene-stop>Stop</button>
+              <button type="button" data-scene-next aria-label="Next video">&#8594;</button>
+              <span class="scene-count" aria-live="polite">1 / 4</span>
+            </div>
+            <p class="scene-status" role="status"></p>
           </div>
         </div>
       </section>

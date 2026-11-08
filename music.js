@@ -262,6 +262,8 @@
     document.body.appendChild(s);
   }
   function swapTo(url, push) {
+    if (window.disposeSceneCarousel) window.disposeSceneCarousel();
+    syncVideoSound();
     return fetch(url, { credentials: 'same-origin' }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.text();
