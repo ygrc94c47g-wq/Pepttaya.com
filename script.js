@@ -33,7 +33,7 @@
   if (y) y.textContent = new Date().getFullYear();
 })();
 
-// Re-run safely after music.js soft navigation: dispose the previous instance.
+// Re-run safely: dispose the previous instance if the script is loaded again.
 (function () {
   if (window.disposeDeliveryCarousel) window.disposeDeliveryCarousel();
   var root = document.querySelector('.delivery-carousel');

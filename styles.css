@@ -259,7 +259,7 @@ p { margin: 0 0 1em; }
    ========================================================== */
 .age-gate { display: none; }
 html.gate-open, html.gate-open body { overflow: hidden; }
-html.gate-open body > *:not(.age-gate):not(.gate-readbar):not(.music-player):not(.floating-whatsapp):not(script) {
+html.gate-open body > *:not(.age-gate):not(.gate-readbar):not(.floating-whatsapp):not(script) {
   filter: blur(14px); pointer-events: none; user-select: none;
 }
 html.gate-open .age-gate {
@@ -354,68 +354,6 @@ html.gate-reading .gate-readbar {
   .gate-logo { width: 100px; }
 }
 
-/* ==========================================================
-   Music player (logo + play/stop button) — see music.js
-   ========================================================== */
-.music-player {
-  position: fixed; left: 20px; bottom: 16px; z-index: 70;
-  display: flex; flex-direction: column; align-items: flex-start; gap: 0;
-  max-width: calc(100vw - 24px);
-}
-.music-pill {
-  display: flex; align-items: center; gap: 12px;
-  padding: 8px 8px 8px 10px; border-radius: 999px;
-  background: rgba(0, 15, 42, .82);
-  border: 1px solid rgba(249, 179, 29, .35);
-  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, .75), 0 0 0 1px rgba(4, 112, 205, .18) inset;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-}
-/* Player stays usable on the 21+ gate: above the overlay, gate content kept clear of it */
-html.gate-open .music-player { z-index: 1010; }
-html.gate-open .age-gate { padding-bottom: 140px; }
-.music-logo { width: 44px; height: auto; flex: 0 0 auto; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5)); }
-.music-btn {
-  position: relative; display: inline-flex; align-items: center; gap: 12px;
-  min-height: 60px; padding: 0 26px 0 12px; border: 0; border-radius: 999px; cursor: pointer;
-  background: var(--gold); color: var(--navy);
-  font-family: var(--font-sans); font-size: 1.08rem; font-weight: 700; letter-spacing: .01em;
-  box-shadow: 0 10px 26px -8px rgba(249, 179, 29, .65);
-  transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
-}
-.music-btn:hover { background: var(--gold-soft); transform: translateY(-1px); box-shadow: 0 14px 30px -8px rgba(249, 179, 29, .8); }
-.music-btn:active { transform: translateY(1px); }
-.music-btn:focus-visible { outline: 3px solid var(--ocean-light); outline-offset: 4px; }
-.music-icon {
-  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
-  background: var(--navy); color: var(--gold);
-}
-.music-icon .icon-stop { display: none; }
-.music-player.is-playing .icon-play { display: none; }
-.music-player.is-playing .icon-stop { display: block; }
-.music-player.is-playing .music-btn::before,
-.music-player.is-playing .music-btn::after {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-  border: 2px solid var(--gold); animation: musicPulse 2s ease-out infinite;
-}
-.music-player.is-playing .music-btn::after { border-color: var(--sunset); animation-delay: 1s; }
-.music-player.is-playing .music-btn { box-shadow: 0 0 0 4px rgba(246, 112, 12, .25), 0 0 28px 4px rgba(249, 179, 29, .55); }
-@keyframes musicPulse {
-  0%   { transform: scale(1); opacity: .85; }
-  100% { transform: scale(1.18, 1.45); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .music-player.is-playing .music-btn::before, .music-player.is-playing .music-btn::after { animation: none; opacity: 0; }
-}
-.site-footer { padding-bottom: 140px; }
-@media (max-width: 480px) {
-  .music-player { left: 12px; bottom: 10px; }
-  .music-pill { gap: 10px; padding: 6px 6px 6px 8px; }
-  .music-logo { width: 40px; }
-  .music-btn { min-height: 56px; font-size: 1rem; padding: 0 22px 0 10px; }
-  .music-icon { width: 36px; height: 36px; }
-}
-
-
 
 /* ==========================================================
    What's available (Thailand + UK)
@@ -489,30 +427,12 @@ html.gate-open .age-gate { padding-bottom: 140px; }
 .product-disclosure > summary:hover { background: rgba(249, 179, 29, .06); }
 .product-disclosure > summary:focus-visible { outline: 3px solid var(--gold); outline-offset: -4px; }
 
-/* Compact fixed contact/music controls, clear of phone safe areas. */
-.music-player { left: calc(12px + env(safe-area-inset-left, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
-.music-pill { gap: 6px; padding: 4px 4px 4px 6px; }
-.music-logo { width: 28px; }
-.music-btn { min-height: 44px; padding: 0 12px 0 6px; gap: 6px; font-size: .85rem; box-shadow: none; }
-.music-icon { width: 26px; height: 26px; }
-.music-icon svg { width: 16px; height: 16px; }
-.music-player.is-playing .music-btn::before, .music-player.is-playing .music-btn::after { display: none; }
-.music-player.is-playing .music-btn { box-shadow: 0 0 10px rgba(249, 179, 29, .25); }
+/* Fixed WhatsApp contact, clear of phone safe areas. */
 .floating-whatsapp { position: fixed; right: calc(12px + env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); bottom: auto; z-index: 70; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #072c18; border: 1px solid rgba(249, 179, 29, .55); box-shadow: 0 6px 22px rgba(0, 0, 0, .35); }
 .floating-whatsapp:hover { background: #58e28c; color: #072c18; }
 .floating-whatsapp:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
 html.gate-open .floating-whatsapp { z-index: 1010; }
 .delivery-carousel { scroll-margin-bottom: 90px; }
-
-/* Music drawer: only the 44px tab is visible until hover/focus/tap. */
-.music-player { flex-direction: row; align-items: center; gap: 0; }
-.music-tab { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); background: var(--navy); color: var(--gold-soft); cursor: pointer; }
-.music-tab:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
-.music-player .music-pill { max-width: 0; padding: 0; gap: 0; border-width: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-width .2s ease, opacity .2s ease; }
-.music-player.controls-open .music-pill { max-width: 146px; padding: 4px; border-width: 1px; opacity: 1; visibility: visible; margin-left: 4px; }
-.music-player .music-logo { display: none; }
-.music-player .music-btn { flex-shrink: 0; }
-@media (prefers-reduced-motion: reduce) { .music-player .music-pill { transition: none; } }
 
 /* Behind the scenes: a single end-driven video carousel. */
 .scene-carousel { max-width: 420px; width: 100%; margin-inline: auto; }

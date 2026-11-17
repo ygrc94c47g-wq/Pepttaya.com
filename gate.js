@@ -22,7 +22,7 @@
   }
   function siblings() {
     return Array.prototype.filter.call(document.body.children, function (el) {
-      return el !== gate && el !== readbar && el.id !== 'music-player' && !el.classList.contains('floating-whatsapp') && el.tagName !== 'SCRIPT';
+      return el !== gate && el !== readbar && !el.classList.contains('floating-whatsapp') && el.tagName !== 'SCRIPT';
     });
   }
   function setInert(on) {
@@ -38,9 +38,7 @@
   }
   function focusables() {
     var sel = 'a[href], button, input, [tabindex]:not([tabindex="-1"])';
-    var mp = document.getElementById('music-player');
     var els = Array.prototype.slice.call(gate.querySelectorAll(sel));
-    if (mp) els = els.concat(Array.prototype.slice.call(mp.querySelectorAll(sel)));
     return Array.prototype.filter.call(
       els,
       function (el) { return !el.disabled && el.offsetParent !== null; }
@@ -73,8 +71,6 @@
     if (!(age.checked && tos.checked)) return;
     save();
     close();
-    // Let the music player start inside this click (counts as a user gesture)
-    try { document.dispatchEvent(new CustomEvent('pepttaya:entered')); } catch (e) {}
     root.classList.remove('gate-reading');
     if (readbar) readbar.setAttribute('hidden', '');
   });
@@ -96,7 +92,7 @@
     open();
   }, true);
 
-  // Keep keyboard focus inside the dialog (and the music controls)
+  // Keep keyboard focus inside the dialog
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Tab' || !root.classList.contains('gate-open') || !document.body.contains(gate)) return;
     var f = focusables();
